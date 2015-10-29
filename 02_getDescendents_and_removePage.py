@@ -31,3 +31,12 @@ for row in table:
     client.confluence2.removePage(authToken,str(remove_page))
 cursor.close
 connect.close()
+
+#Удаление метаданных в БД
+sql = "DELETE FROM DEV_DB_STG.S_FILE_POWER_DESIGNER"
+connect = pyodbc.connect('DSN=TD')
+cursor = connect.cursor()
+cursor.execute(sql)
+connect.commit()
+cursor.close
+connect.close()
